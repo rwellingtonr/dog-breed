@@ -1,5 +1,10 @@
 import React from "react"
+import { Routes, Route } from "react-router-dom"
 
-export default function Routes() {
-	return <div>Routes</div>
+export default function MainRoutes() {
+	return (
+		<Routes>
+			<Route path="/"></Route>
+		</Routes>
+	)
 }
