@@ -1,9 +1,9 @@
 import React from "react"
 import RequireAuth from "../components/validation"
 import BaseLayout from "../layout"
-import BreedCollection from "../pages/BreedCollection"
-import BreedsNav from "../pages/BreedsNav"
-import Home from "../pages/Home"
+import BreedCollection from "../pages/breedCollection"
+import BreedsNav from "../pages/breedsNav"
+import Home from "../pages/home"
 import { Routes, Route } from "react-router-dom"
 import { routes } from "../config/appRoutes"
 
