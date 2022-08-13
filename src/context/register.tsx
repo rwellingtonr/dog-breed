@@ -39,20 +39,23 @@ export default function AuthProvider({ children }: AuthProvider) {
 		}
 	})
 
-	useEffect(() => {
-		const code = localStorage.getItem("@breed:token")
-		if (code) setBearer(code)
-	}, [])
+	// useEffect(() => {
+	// 	const code = localStorage.getItem("@breed:token")
+	// 	if (code) setAuthToken(code)
+	// }, [])
 
-	const setBearer = (token: string) => {
-		api.defaults.headers.common.authorization = `Bearer ${token}`
+	const setAuthToken = (token: string) => {
+		console.log("passou 1")
+
+		api.defaults.headers.common.authorization = token
 	}
 
 	const signIn = async (login: LogInDTO) => {
-		const res = await api.post("signin", login)
+		const res = await api.post<Register>("register", login)
+		const { user } = res.data
 		//localStorage.setItem("@breed:token", token)
-		setToken(token)
-		setBearer(token)
+		setToken(user.token)
+		setAuthToken(user.token)
 	}
 
 	const signOut = () => {

@@ -1,5 +1,15 @@
 import React from "react"
+import { BrowserRouter } from "react-router-dom"
+import ContainerWrapper from "./layout/container"
+import MainRoutes from "./routes"
 
-export default function App() {
-	return <></>
+function App() {
+	return (
+		<ContainerWrapper>
+			<BrowserRouter>
+				<MainRoutes />
+			</BrowserRouter>
+		</ContainerWrapper>
+	)
 }
+export default App
