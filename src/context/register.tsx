@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useEffect, useState, useContext } from "react"
+import React, { createContext, ReactNode, useState, useContext } from "react"
 import { api } from "../service/api"
 
 type AuthProvider = {

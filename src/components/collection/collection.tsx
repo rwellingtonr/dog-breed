@@ -1,11 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import ImageList from "@mui/material/ImageList"
 import ImageListItem from "@mui/material/ImageListItem"
-import Box from "@mui/material/Box"
-import { useParams } from "react-router-dom"
-import { api } from "../../service/api"
 import style from "./collection.module.scss"
 import DefaultBackDrop from "../backDrop"
+import { useParams } from "react-router-dom"
+import { api } from "../../service/api"
 
 type Images = {
 	breed: string
