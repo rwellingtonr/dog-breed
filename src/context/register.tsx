@@ -36,14 +36,9 @@ export default function AuthProvider({ children }: AuthProvider) {
 		}
 	})
 
-	// useEffect(() => {
-	// 	const code = localStorage.getItem("@breed:token")
-	// 	if (code) setAuthToken(code)
-	// }, [])
-
 	const setAuthToken = (token: string) => {
 		console.log("passou 1")
-
+		setToken(token)
 		api.defaults.headers.common.authorization = token
 	}
 
@@ -51,8 +46,8 @@ export default function AuthProvider({ children }: AuthProvider) {
 		email = email.trim().toLowerCase()
 		const res = await api.post<Register>("register", { email })
 		const { user } = res.data
-		//localStorage.setItem("@breed:token", token)
-		setToken(user.token)
+		localStorage.setItem("@breed:token", user.token)
+
 		setAuthToken(user.token)
 	}
 

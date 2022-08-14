@@ -23,7 +23,7 @@ export default function Home() {
 
 	useEffect(() => {
 		if (token) navigate(`${routes.breeds}/${breeds.chihuahua}`)
-	}, [token])
+	}, [])
 
 	return (
 		<HomeWrapper>
