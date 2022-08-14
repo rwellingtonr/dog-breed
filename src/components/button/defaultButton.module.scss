@@ -1,0 +1,9 @@
+Button.button {
+	text-decoration: none;
+	color: #444458;
+	border: 1px solid #444458;
+
+	&:hover {
+		background: rgba(20, 17, 17, 0.38);
+	}
+}

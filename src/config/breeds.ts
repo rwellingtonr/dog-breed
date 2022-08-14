@@ -1,5 +1,15 @@
-export const breeds = {
-	chihuahua: "chihuahua",
+enum BreedsEnum {
+	chihuahua,
+	husky,
+	pug,
+	labrador,
 }
 
-export type BreedsTypes = "chihuahua"
+const breeds = {
+	chihuahua: "chihuahua",
+	husky: "husky",
+	pug: "pug",
+	labrador: "labrador",
+}
+
+export { BreedsEnum, breeds }

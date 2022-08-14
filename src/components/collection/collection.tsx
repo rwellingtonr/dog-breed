@@ -1,9 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react"
 import ImageList from "@mui/material/ImageList"
 import ImageListItem from "@mui/material/ImageListItem"
+import Box from "@mui/material/Box"
 import { useParams } from "react-router-dom"
 import { api } from "../../service/api"
-import { breeds, BreedsTypes } from "../../config/breeds"
+import style from "./collection.module.scss"
+import DefaultBackDrop from "../backDrop"
 
 type Images = {
 	breed: string
@@ -12,34 +14,36 @@ type Images = {
 
 export default function Collection() {
 	const { breed } = useParams<"breed">()
-	const [dogs, setDogs] = useState({} as Images)
+	const [loading, setLoading] = useState(false)
+	const [dogs, setDogs] = useState<string[]>([])
 
-	const getBreedDogs = useCallback(async (breed: BreedsTypes) => {
-		console.log("GET")
-
-		if (breeds[breed]) {
-			const res = await api.get<Images>("list", {
-				params: { breed },
-			})
-			res.data
-			setDogs(res.data)
-		}
-		throw new Error("")
+	const getBreedDogs = useCallback(async (breed: string) => {
+		const res = await api.get<Images>("list", {
+			params: { breed },
+		})
+		setDogs(res.data.list)
+		setLoading(false)
 	}, [])
 
 	useEffect(() => {
 		if (breed) {
-			getBreedDogs(breed as BreedsTypes).catch(e => console.error(e))
+			setLoading(true)
+			getBreedDogs(breed).catch(e => {
+				console.error(e)
+				setDogs([])
+				setLoading(false)
+			})
 		}
-	}, [breed, getBreedDogs])
+	}, [breed])
 
 	return (
-		<ImageList sx={{ width: 500, height: 450 }} variant="woven" cols={3} gap={8}>
-			{dogs?.list.map((dog, index) => (
+		<ImageList className={style.imagesWrapper} variant="woven" cols={5} gap={8}>
+			{dogs.map((dog, index) => (
 				<ImageListItem key={index}>
-					<img src={dog} srcSet={dog} alt={dogs?.breed} loading="lazy" />
+					<img src={dog} srcSet={dog} alt={breed} loading="lazy" />
 				</ImageListItem>
 			))}
+			<DefaultBackDrop open={loading} />
 		</ImageList>
 	)
 }

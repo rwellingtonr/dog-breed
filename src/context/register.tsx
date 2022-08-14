@@ -7,7 +7,7 @@ type AuthProvider = {
 
 type AuthContextValue = {
 	token: string
-	signIn: (signIn: LogInDTO) => Promise<void>
+	signIn: (email: string) => Promise<void>
 	signOut: () => void
 }
 
@@ -30,16 +30,17 @@ export default function AuthProvider({ children }: AuthProvider) {
 	const [token, setToken] = useState<string>(() => {
 		try {
 			const code = localStorage.getItem("@breed:token")
+			if (code) api.defaults.headers.common.authorization = code
 			return code ?? ""
-		} catch (error) {
+		} catch (err) {
+			console.error(err)
 			return ""
 		}
 	})
 
 	const setAuthToken = (token: string) => {
-		console.log("passou 1")
-		setToken(token)
 		api.defaults.headers.common.authorization = token
+		setToken(token)
 	}
 
 	const signIn = async (email: string) => {

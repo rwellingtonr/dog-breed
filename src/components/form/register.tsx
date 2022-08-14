@@ -1,14 +1,14 @@
 import React, { useState } from "react"
 import { Stack, Box, TextField } from "@mui/material"
-import Backdrop from "@mui/material/Backdrop"
-import CircularProgress from "@mui/material/CircularProgress"
-import Button from "@mui/material/Button"
+
 import style from "./register.module.scss"
 import { useAuth } from "../../context/register"
 import ErrorSnackbars from "../alert/error"
 import { useNavigate } from "react-router-dom"
 import { routes } from "../../config/appRoutes"
 import { breeds } from "../../config/breeds"
+import DefaultButton from "../button/defaultButton"
+import DefaultBackDrop from "../backDrop"
 
 function validateEmail(email: string) {
 	if (!email.trim()) return false
@@ -31,7 +31,7 @@ export default function Register() {
 			}
 			await signIn(email)
 			navigate(`${routes.breeds}/${breeds.chihuahua}`)
-		} catch (err) {
+		} catch (err: any) {
 			setError(err.message || "Error ao executar o login")
 			setEmail("")
 			setLoading(false)
@@ -66,15 +66,8 @@ export default function Register() {
 						variant="outlined"
 						onChange={e => setEmail(e.target.value)}
 					/>
-					<Button className={style.button} variant="outlined" onClick={handleRegister}>
-						Enviar
-					</Button>
-					<Backdrop
-						sx={{ color: "#fff", zIndex: theme => theme.zIndex.drawer + 1 }}
-						open={loading}
-					>
-						<CircularProgress color="inherit" />
-					</Backdrop>
+					<DefaultButton handleClick={handleRegister}>Enviar</DefaultButton>
+					<DefaultBackDrop open={loading} />
 				</div>
 			</Stack>
 			<ErrorSnackbars open={!!error} text={error} handleClose={handleClose} />

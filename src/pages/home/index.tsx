@@ -7,6 +7,7 @@ import { Box, Stack } from "@mui/system"
 import { styled } from "@mui/material/styles"
 import pug from "../../assets/pug.jpeg"
 import Register from "../../components/form/register"
+import Grow from "@mui/material/Grow"
 import style from "./home.module.scss"
 
 const HomeWrapper = styled(Box)(() => ({
@@ -32,7 +33,9 @@ export default function Home() {
 				direction={{ xs: "column", sm: "row" }}
 				spacing={{ xs: 1, sm: 2, md: 4 }}
 			>
-				<img src={pug} alt="Pug Image" className={style.imgPug} />
+				<Grow in={!token} style={{ transitionDelay: "300ms" }}>
+					<img src={pug} alt="Pug Image" className={style.imgPug} />
+				</Grow>
 				<Register />
 			</Stack>
 		</HomeWrapper>

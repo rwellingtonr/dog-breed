@@ -11,6 +11,7 @@ export default function RequireAuth({ children }: Children) {
 
 	if (!token) {
 		const location = useLocation()
+		console.warn("Return")
 		return <Navigate to="/" state={{ from: location }} replace />
 	}
 
