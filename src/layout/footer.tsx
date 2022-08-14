@@ -7,7 +7,7 @@ import { Paper } from "@mui/material"
 
 const FooterWrapper = styled(Box)(() => ({
 	boxSizing: "border-box",
-	position: "absolute",
+	position: "relative",
 	width: "100%",
 	left: 0,
 	bottom: 0,

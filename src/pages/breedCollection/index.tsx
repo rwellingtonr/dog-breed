@@ -37,7 +37,7 @@ export default function BreedCollection() {
 				value={value}
 				onChange={handleChange}
 				aria-label="VerticalTabs"
-				sx={{ borderRight: 1, borderColor: "divider" }}
+				sx={{ borderRight: 1, borderColor: "divider", minWidth: "100px" }}
 			>
 				{Object.values(breeds).map((breed, i) => (
 					<Tab label={breed} {...a11yProps(i)} key={i} style={{ color: "#444458" }} />

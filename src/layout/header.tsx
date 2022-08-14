@@ -17,7 +17,12 @@ export default function Header() {
 
 	return (
 		<Box component="header" style={{ height: "100%" }}>
-			<Grid className={style.headerWrapper} container spacing={2} alignItems="center">
+			<Grid
+				className={style.headerWrapper}
+				container
+				spacing={{ xs: 1, sm: 2, md: 4 }}
+				alignItems="center"
+			>
 				<Grid item xs={10}>
 					<h1 className={style.headerTitle}>Galeria</h1>
 				</Grid>
