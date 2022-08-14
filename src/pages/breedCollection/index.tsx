@@ -22,7 +22,15 @@ export default function BreedCollection() {
 	}
 
 	return (
-		<Box sx={{ flexGrow: 1, bgcolor: "background.paper", display: "flex", height: "100%" }}>
+		<Box
+			sx={{
+				flexGrow: 1,
+				bgcolor: "background.paper",
+				display: "flex",
+				height: "100%",
+				"& .css-10d9dml-MuiTabs-indicator": { backgroundColor: "#444458" },
+			}}
+		>
 			<Tabs
 				orientation="vertical"
 				variant="scrollable"
@@ -32,7 +40,7 @@ export default function BreedCollection() {
 				sx={{ borderRight: 1, borderColor: "divider" }}
 			>
 				{Object.values(breeds).map((breed, i) => (
-					<Tab label={breed} {...a11yProps(i)} key={i} />
+					<Tab label={breed} {...a11yProps(i)} key={i} style={{ color: "#444458" }} />
 				))}
 			</Tabs>
 			<div style={{ margin: "20px", width: "100%" }}>
