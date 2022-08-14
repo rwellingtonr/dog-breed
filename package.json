@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.t*\" && yarn lint",
-		"lint": "eslint \"src/**/*.t*\" --fix"
+    "lint": "eslint \"src/**/*.t*\" --fix"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -17,7 +17,8 @@
     "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "6"
+    "react-router-dom": "6",
+    "sass": "^1.54.4"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",

@@ -1,0 +1,10 @@
+.stackWrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 100%;
+
+	.imgPug {
+		height: 40vw;
+	}
+}

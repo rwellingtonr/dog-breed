@@ -1,0 +1,35 @@
+.formWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	height: 300px;
+	width: 400px;
+	background: #ffffff;
+
+	box-sizing: border-box;
+	box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+	border: 1px solid #444458;
+	border-radius: 50px;
+
+	.title {
+		text-align: center;
+		margin-bottom: 50px;
+	}
+
+	.txtForm {
+		border-radius: 15px;
+		background-color: #ffffff;
+		margin: 0 5px;
+	}
+	Button.button {
+		text-decoration: none;
+		color: #444458;
+		border: 1px solid #444458;
+
+		&:hover {
+			background: rgba(20, 17, 17, 0.38);
+		}
+	}
+}

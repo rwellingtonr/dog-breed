@@ -21,9 +21,6 @@ type User = {
 type Register = {
 	user: User
 }
-type LogInDTO = {
-	email: string
-}
 
 export const AuthContext = createContext({} as AuthContextValue)
 
@@ -50,8 +47,9 @@ export default function AuthProvider({ children }: AuthProvider) {
 		api.defaults.headers.common.authorization = token
 	}
 
-	const signIn = async (login: LogInDTO) => {
-		const res = await api.post<Register>("register", login)
+	const signIn = async (email: string) => {
+		email = email.trim().toLowerCase()
+		const res = await api.post<Register>("register", { email })
 		const { user } = res.data
 		//localStorage.setItem("@breed:token", token)
 		setToken(user.token)

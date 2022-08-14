@@ -4,7 +4,18 @@ import { useAuth } from "../../context/register"
 import { routes } from "../../config/appRoutes"
 import { breeds } from "../../config/breeds"
 import { Box, Stack } from "@mui/system"
+import { styled } from "@mui/material/styles"
 import pug from "../../assets/pug.jpeg"
+import Register from "../../components/form/register"
+import style from "./home.module.scss"
+
+const HomeWrapper = styled(Box)(() => ({
+	display: "flex",
+	alignItems: "center",
+	flexDirection: "column",
+	height: "100%",
+	width: "100%",
+}))
 
 export default function Home() {
 	const { token } = useAuth()
@@ -15,11 +26,15 @@ export default function Home() {
 	}, [token])
 
 	return (
-		<Box>
-			<Stack direction={{ xs: "column", sm: "row" }} spacing={{ xs: 1, sm: 2, md: 4 }}>
-				<img src={pug} alt="Pug Image" />
-				<form></form>
+		<HomeWrapper>
+			<Stack
+				className={style.stackWrapper}
+				direction={{ xs: "column", sm: "row" }}
+				spacing={{ xs: 1, sm: 2, md: 4 }}
+			>
+				<img src={pug} alt="Pug Image" className={style.imgPug} />
+				<Register />
 			</Stack>
-		</Box>
+		</HomeWrapper>
 	)
 }

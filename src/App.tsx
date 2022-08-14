@@ -1,15 +1,13 @@
 import React from "react"
 import { BrowserRouter } from "react-router-dom"
-import ContainerWrapper from "./layout/container"
+
 import MainRoutes from "./routes"
 
 function App() {
 	return (
-		<ContainerWrapper>
-			<BrowserRouter>
-				<MainRoutes />
-			</BrowserRouter>
-		</ContainerWrapper>
+		<BrowserRouter>
+			<MainRoutes />
+		</BrowserRouter>
 	)
 }
 export default App

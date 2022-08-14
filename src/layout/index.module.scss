@@ -1,0 +1,19 @@
+.containerWrapper {
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: 80px auto 30px;
+	grid-template-areas: "header" "main" "footer";
+
+	.header {
+		grid-area: header;
+	}
+	.outlet {
+		grid-area: main;
+	}
+	.footer {
+		grid-area: footer;
+	}
+}
