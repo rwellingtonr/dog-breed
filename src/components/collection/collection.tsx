@@ -5,6 +5,7 @@ import style from "./collection.module.scss"
 import DefaultBackDrop from "../backDrop"
 import { useParams } from "react-router-dom"
 import { api } from "../../service/api"
+import { BreedsEnum } from "../../config/breeds"
 
 type Images = {
 	breed: string
@@ -17,6 +18,7 @@ export default function Collection() {
 	const [dogs, setDogs] = useState<string[]>([])
 
 	const getBreedDogs = useCallback(async (breed: string) => {
+		if (!(breed in BreedsEnum)) return
 		const res = await api.get<Images>("list", {
 			params: { breed },
 		})
