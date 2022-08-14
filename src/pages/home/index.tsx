@@ -23,6 +23,7 @@ export default function Home() {
 	const navigate = useNavigate()
 
 	useEffect(() => {
+		window.document.title = "Registar"
 		if (token) navigate(`${routes.breeds}/${breeds.chihuahua}`)
 	}, [])
 
@@ -33,7 +34,7 @@ export default function Home() {
 				direction={{ xs: "column", sm: "row" }}
 				spacing={{ xs: 1, sm: 2, md: 4 }}
 			>
-				<Grow in={!token} style={{ transitionDelay: "300ms" }}>
+				<Grow in={!token} style={{ transitionDelay: "500ms" }}>
 					<img src={pug} alt="Pug Image" className={style.imgPug} />
 				</Grow>
 				<Register />

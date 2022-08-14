@@ -31,7 +31,12 @@ export default function Footer() {
 			<Stack direction="column" sx={{ height: "100%" }}>
 				<Message>
 					Created by{" "}
-					<Link href="#" underline="hover" color="inherit">
+					<Link
+						href="https://github.com/rwellingtonr"
+						target={"_blank"}
+						underline="hover"
+						color="inherit"
+					>
 						{"Wellington Leardini"}
 					</Link>
 				</Message>

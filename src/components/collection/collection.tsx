@@ -28,6 +28,7 @@ export default function Collection() {
 
 	useEffect(() => {
 		if (breed) {
+			window.document.title = breed
 			setLoading(true)
 			getBreedDogs(breed).catch(e => {
 				console.error(e)
