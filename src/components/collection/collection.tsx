@@ -51,14 +51,19 @@ export default function Collection() {
 					src={overlayDog}
 					srcSet={overlayDog}
 					alt={overlayDog}
-					style={{ maxHeight: "70vh" }}
+					style={{ maxWidth: "60vh" }}
 				/>
 			</Backdrop>
 		)
 	}, [overlayDog])
 
 	return (
-		<ImageList className={style.imagesWrapper} variant="woven" cols={5} gap={8}>
+		<ImageList
+			className={style.imagesWrapper}
+			variant="woven"
+			cols={window.innerWidth > 500 ? 5 : 2}
+			gap={8}
+		>
 			{dogs.map((dog, index) => (
 				<ImageListItem key={index}>
 					<img
