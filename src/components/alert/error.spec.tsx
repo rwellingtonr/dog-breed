@@ -9,5 +9,5 @@ test("Error Warning", () => {
 		<ErrorSnackbars open={true} text={testMessage} handleClose={console.warn} />
 	)
 
-	expect(getByText(testMessage)).toBeTruthy()
+	expect(getByText(testMessage)).toBeInTheDocument()
 })
