@@ -7,7 +7,7 @@ import { Paper } from "@mui/material"
 
 const FooterWrapper = styled(Box)(() => ({
 	boxSizing: "border-box",
-	position: "relative",
+	position: "absolute",
 	width: "100%",
 	left: 0,
 	bottom: 0,
@@ -28,7 +28,7 @@ const Message = styled(Paper)(({ theme }) => ({
 export default function Footer() {
 	return (
 		<FooterWrapper>
-			<Stack direction="column" sx={{ height: "100%" }}>
+			<Stack direction="column">
 				<Message>
 					Created by{" "}
 					<Link
