@@ -1,6 +1,6 @@
 import React from "react"
-import ErrorSnackbars from "./error"
 import { render } from "@testing-library/react"
+import ErrorSnackbars from "./error"
 
 test("Error Warning", () => {
 	const testMessage = "jest"
