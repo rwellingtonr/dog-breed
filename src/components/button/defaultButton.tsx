@@ -9,7 +9,7 @@ type ButtonProps = {
 
 export default function DefaultButton({ handleClick, children }: ButtonProps) {
 	return (
-		<Button className={style.button} variant="outlined" onClick={handleClick}>
+		<Button className={style.button} type="submit" variant="outlined" onClick={handleClick}>
 			{children}
 		</Button>
 	)

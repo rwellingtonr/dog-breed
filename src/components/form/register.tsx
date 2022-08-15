@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { Stack, Box, TextField } from "@mui/material"
-
 import style from "./register.module.scss"
 import { useAuth } from "../../context/register"
 import ErrorSnackbars from "../alert/error"
@@ -26,15 +25,20 @@ export default function Register() {
 	const handleRegister = async () => {
 		try {
 			setLoading(true)
-			if (!validateEmail(email)) {
-				throw new Error("Erro ao preencher email")
-			}
+			if (!validateEmail(email)) throw new Error("Erro ao preencher email")
 			await signIn(email)
 			navigate(`${routes.breeds}/${breeds.chihuahua}`)
 		} catch (err: any) {
 			setError(err.message || "Error ao executar o login")
 			setEmail("")
 			setLoading(false)
+		}
+	}
+
+	const handleKeyPress = async (e: React.KeyboardEvent<HTMLFormElement>) => {
+		if (e.key === "Enter") {
+			e.preventDefault()
+			await handleRegister()
 		}
 	}
 
@@ -52,6 +56,7 @@ export default function Register() {
 				"& .MuiTextField-root": { width: "250px" },
 			}}
 			noValidate
+			onKeyDown={handleKeyPress}
 			autoComplete="off"
 		>
 			<Stack direction="column" spacing={5}>
