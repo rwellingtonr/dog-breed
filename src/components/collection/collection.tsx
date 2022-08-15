@@ -54,6 +54,7 @@ export default function Collection() {
 						srcSet={dog}
 						alt={breed}
 						loading="lazy"
+						style={{ cursor: "pointer" }}
 						onClick={() => setOverlayDog(dog)}
 					/>
 				</ImageListItem>
