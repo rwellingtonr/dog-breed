@@ -34,6 +34,10 @@ export default function Register() {
 			setLoading(false)
 		}
 	}
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+		await handleRegister()
+	}
 
 	const handleKeyPress = async (e: React.KeyboardEvent<HTMLFormElement>) => {
 		if (e.key === "Enter") {
@@ -57,6 +61,7 @@ export default function Register() {
 			}}
 			noValidate
 			onKeyDown={handleKeyPress}
+			onSubmit={handleSubmit}
 			autoComplete="off"
 		>
 			<Stack direction="column" spacing={5}>
@@ -71,7 +76,7 @@ export default function Register() {
 						variant="outlined"
 						onChange={e => setEmail(e.target.value)}
 					/>
-					<DefaultButton handleClick={handleRegister}>Enviar</DefaultButton>
+					<DefaultButton>Enviar</DefaultButton>
 					<DefaultBackDrop open={loading} />
 				</div>
 			</Stack>
