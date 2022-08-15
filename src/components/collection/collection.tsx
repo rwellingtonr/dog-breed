@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import ImageList from "@mui/material/ImageList"
 import ImageListItem from "@mui/material/ImageListItem"
 import style from "./collection.module.scss"
 import DefaultBackDrop from "../backDrop"
-import Backdrop from "@mui/material/Backdrop"
 import { useParams } from "react-router-dom"
 import { api } from "../../service/api"
 import { BreedsEnum } from "../../config/breeds"
+import { useCollection } from "../../pages/breedCollection"
 
 type Images = {
 	breed: string
@@ -16,7 +16,7 @@ type Images = {
 export default function Collection() {
 	const { breed } = useParams<"breed">()
 	const [loading, setLoading] = useState(false)
-	const [overlayDog, setOverlayDog] = useState("")
+	const { setOverlayDog } = useCollection()
 	const [dogs, setDogs] = useState<string[]>([])
 
 	const getBreedDogs = useCallback(async (breed: string) => {
@@ -40,23 +40,6 @@ export default function Collection() {
 		}
 	}, [breed])
 
-	const handleOverlay = useMemo(() => {
-		return (
-			<Backdrop
-				sx={{ color: "#fff", zIndex: theme => theme.zIndex.drawer + 1 }}
-				open={!!overlayDog}
-				onClick={() => setOverlayDog("")}
-			>
-				<img
-					src={overlayDog}
-					srcSet={overlayDog}
-					alt={overlayDog}
-					style={{ maxWidth: "60vh" }}
-				/>
-			</Backdrop>
-		)
-	}, [overlayDog])
-
 	return (
 		<ImageList
 			className={style.imagesWrapper}
@@ -76,7 +59,6 @@ export default function Collection() {
 				</ImageListItem>
 			))}
 			<DefaultBackDrop open={loading} />
-			{handleOverlay}
 		</ImageList>
 	)
 }

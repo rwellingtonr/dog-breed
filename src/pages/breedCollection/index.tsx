@@ -1,9 +1,12 @@
-import React, { useState } from "react"
+import React, { useMemo, useState } from "react"
 import Tabs from "@mui/material/Tabs"
 import Tab from "@mui/material/Tab"
 import Box from "@mui/material/Box"
+import Backdrop from "@mui/material/Backdrop"
 import { breeds, BreedsEnum } from "../../config/breeds"
-import { Outlet, useNavigate } from "react-router-dom"
+import { Outlet, useNavigate, useOutletContext } from "react-router-dom"
+
+type ContextType = { setOverlayDog: (src: string) => void }
 
 function a11yProps(index: number) {
 	return {
@@ -14,12 +17,34 @@ function a11yProps(index: number) {
 
 export default function BreedCollection() {
 	const [value, setValue] = useState(0)
+	const [overlayDog, setOverlayDog] = useState("")
 	const navigate = useNavigate()
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue)
 		navigate(`${BreedsEnum[newValue]}`)
 	}
+
+	const maxWidth = useMemo(() => {
+		return window.innerWidth > 500 ? "60vh" : "300px"
+	}, [window.innerWidth])
+
+	const handleOverlay = useMemo(() => {
+		return (
+			<Backdrop
+				sx={{ color: "#fff", zIndex: theme => theme.zIndex.drawer + 1 }}
+				open={!!overlayDog}
+				onClick={() => setOverlayDog("")}
+			>
+				<img
+					src={overlayDog}
+					srcSet={overlayDog}
+					alt={overlayDog}
+					style={{ maxWidth, borderRadius: "20px" }}
+				/>
+			</Backdrop>
+		)
+	}, [overlayDog])
 
 	return (
 		<Box
@@ -44,8 +69,13 @@ export default function BreedCollection() {
 				))}
 			</Tabs>
 			<div style={{ margin: "20px", width: "100%" }}>
-				<Outlet />
+				<Outlet context={{ setOverlayDog }} />
 			</div>
+			{handleOverlay}
 		</Box>
 	)
+}
+
+export function useCollection() {
+	return useOutletContext<ContextType>()
 }
