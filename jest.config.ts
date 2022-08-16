@@ -1,7 +1,4 @@
-/*
- * For a detailed explanation regarding each configuration property and type check, visit:
- * https://jestjs.io/docs/configuration
- */
+/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 
 export default {
 	clearMocks: true,
@@ -11,7 +8,12 @@ export default {
 	setupFilesAfterEnv: ["<rootDir>/src/test/setup.ts"],
 
 	testEnvironment: "jsdom",
-
+	globals: {
+		"ts-jest": {
+			tsconfig: "./tsconfig.json",
+			useESM: true,
+		},
+	},
 	transform: {
 		"^.+\\.(t|j)sx?$": [
 			"@swc/jest",
@@ -37,8 +39,10 @@ export default {
 				},
 			},
 		],
+		"^.+\\.scss$": "jest-scss-transform",
 	},
 
+	testPathIgnorePatterns: ["/node_modules/", "/.next/", "/.out/", "/public/"],
 	preset: "ts-jest",
 	testMatch: ["**/**/*.spec.tsx"],
 }

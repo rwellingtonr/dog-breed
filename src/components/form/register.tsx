@@ -14,7 +14,6 @@ function validateEmail(email: string) {
 	const re = /\S+@\S+\.\S+/
 	return re.test(email)
 }
-
 export default function Register() {
 	const { signIn } = useAuth()
 	const [email, setEmail] = useState("")
@@ -72,6 +71,7 @@ export default function Register() {
 						size="small"
 						id="outlined-basic"
 						label="e-mail"
+						value={email}
 						placeholder="Digite seu e-mail"
 						variant="outlined"
 						onChange={e => setEmail(e.target.value)}
