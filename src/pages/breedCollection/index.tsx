@@ -32,7 +32,7 @@ export default function BreedCollection() {
 	const handleOverlay = useMemo(() => {
 		return (
 			<Backdrop
-				sx={{ color: "#fff", zIndex: theme => theme.zIndex.drawer + 1 }}
+				sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
 				open={!!overlayDog}
 				onClick={() => setOverlayDog("")}
 			>
@@ -68,9 +68,9 @@ export default function BreedCollection() {
 					<Tab label={breed} {...a11yProps(i)} key={i} style={{ color: "#444458" }} />
 				))}
 			</Tabs>
-			<div style={{ margin: "20px", width: "100%" }}>
+			<Box component={"div"} style={{ margin: "10px", width: "100%" }}>
 				<Outlet context={{ setOverlayDog }} />
-			</div>
+			</Box>
 			{handleOverlay}
 		</Box>
 	)

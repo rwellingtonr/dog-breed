@@ -9,6 +9,7 @@ const ScrollContainer = styled(Box)(() => ({
 	overflow: "scroll",
 	width: "100%",
 	height: "80vh",
+	borderRadius: "20px",
 	scrollbarWidth: "thin",
 }))
 
