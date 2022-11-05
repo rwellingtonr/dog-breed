@@ -53,13 +53,13 @@ export default function BreedCollection() {
 				bgcolor: "background.paper",
 				display: "flex",
 				height: "100%",
-				"& .css-10d9dml-MuiTabs-indicator": { backgroundColor: "#444458" },
 			}}
 		>
 			<Tabs
 				orientation="vertical"
 				variant="scrollable"
 				value={value}
+				indicatorColor={"primary"}
 				onChange={handleChange}
 				aria-label="VerticalTabs"
 				sx={{ borderRight: 1, borderColor: "divider", minWidth: "100px" }}

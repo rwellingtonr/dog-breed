@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useState, useContext } from "react"
+import React, { createContext, ReactNode, useState } from "react"
 import { api } from "../service/api"
 
 type AuthProvider = {
@@ -24,7 +24,7 @@ type Register = {
 
 export const AuthContext = createContext({} as AuthContextValue)
 
-export const useAuth = () => useContext(AuthContext)
+export const useAuth = () => React.useContext(AuthContext)
 
 export default function AuthProvider({ children }: AuthProvider) {
 	const [token, setToken] = useState<string>(() => {

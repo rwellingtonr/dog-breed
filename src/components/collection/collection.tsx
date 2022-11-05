@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react"
-import ImageList from "@mui/material/ImageList"
-import ImageListItem from "@mui/material/ImageListItem"
+import Box from "@mui/material/Box"
 import style from "./collection.module.scss"
 import DefaultBackDrop from "../backDrop"
 import { useParams } from "react-router-dom"
@@ -41,15 +40,11 @@ export default function Collection() {
 	}, [breed])
 
 	return (
-		<ImageList
-			className={style.imagesWrapper}
-			variant="woven"
-			cols={window.innerWidth > 500 ? 5 : 2}
-			gap={8}
-		>
+		<Box component={"div"} className={style.container}>
 			{dogs.map((dog, index) => (
-				<ImageListItem key={index}>
+				<Box component={"div"} className={style.galery} key={index}>
 					<img
+						className={style.dog}
 						src={dog}
 						srcSet={dog}
 						alt={breed}
@@ -57,9 +52,9 @@ export default function Collection() {
 						style={{ cursor: "pointer" }}
 						onClick={() => setOverlayDog(dog)}
 					/>
-				</ImageListItem>
+				</Box>
 			))}
 			<DefaultBackDrop open={loading} />
-		</ImageList>
+		</Box>
 	)
 }

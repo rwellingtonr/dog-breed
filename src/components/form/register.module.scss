@@ -22,5 +22,11 @@
 		border-radius: 15px;
 		background-color: #ffffff;
 		margin: 0 5px;
+
+		&:focus {
+			border: 1px solid #444458;
+			box-shadow: 1px 1px 1px;
+			color: #444458;
+		}
 	}
 }
