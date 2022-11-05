@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom"
 import { api } from "../../service/api"
 import { BreedsEnum } from "../../config/breeds"
 import { useCollection } from "../../pages/breedCollection"
+import Scroll from "../scroll"
 
 type Images = {
 	breed: string
@@ -31,7 +32,7 @@ export default function Collection() {
 		if (breed) {
 			window.document.title = breed
 			setLoading(true)
-			getBreedDogs(breed).catch(e => {
+			getBreedDogs(breed).catch((e) => {
 				console.error(e)
 				setDogs([])
 				setLoading(false)
@@ -40,21 +41,23 @@ export default function Collection() {
 	}, [breed])
 
 	return (
-		<Box component={"div"} className={style.container}>
-			{dogs.map((dog, index) => (
-				<Box component={"div"} className={style.galery} key={index}>
-					<img
-						className={style.dog}
-						src={dog}
-						srcSet={dog}
-						alt={breed}
-						loading="lazy"
-						style={{ cursor: "pointer" }}
-						onClick={() => setOverlayDog(dog)}
-					/>
-				</Box>
-			))}
-			<DefaultBackDrop open={loading} />
-		</Box>
+		<Scroll>
+			<Box component={"div"} className={style.container}>
+				{dogs.map((dog, index) => (
+					<Box component={"div"} className={style.galery} key={index}>
+						<img
+							className={style.dog}
+							src={dog}
+							srcSet={dog}
+							alt={breed}
+							loading="lazy"
+							style={{ cursor: "pointer" }}
+							onClick={() => setOverlayDog(dog)}
+						/>
+					</Box>
+				))}
+				<DefaultBackDrop open={loading} />
+			</Box>
+		</Scroll>
 	)
 }
